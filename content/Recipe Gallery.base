@@ -1,0 +1,57 @@
+filters:
+  and:
+    - file.inFolder("Recipes")
+    - file.ext == "md"
+properties:
+  note.meal_type:
+    displayName: Meal type
+  note.cook_time:
+    displayName: Cook time
+  note.times_made:
+    displayName: Times made
+  note.last_made:
+    displayName: Last made
+  note.date_added:
+    displayName: Date added
+views:
+  - type: cards
+    name: Gallery
+    order:
+      - file.name
+      - meal_type
+      - cook_time
+      - tags
+    sort:
+      - property: file.name
+        direction: ASC
+    image: note.photo
+    imageFit: cover
+    imageAspectRatio: 0.75
+    cardSize: 240
+  - type: cards
+    name: Recently made
+    order:
+      - file.name
+      - last_made
+      - times_made
+    sort:
+      - property: last_made
+        direction: DESC
+    image: note.photo
+    imageFit: cover
+    imageAspectRatio: 0.75
+    cardSize: 240
+  - type: table
+    name: Table
+    order:
+      - file.name
+      - meal_type
+      - cook_time
+      - tags
+      - author
+      - times_made
+      - last_made
+      - date_added
+    sort:
+      - property: date_added
+        direction: DESC
